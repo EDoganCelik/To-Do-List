@@ -2,7 +2,6 @@ const gorevEkle = document.querySelector(".btn-add");
 const list = document.querySelector(".toDoList");
 gorevEkle.addEventListener("click", clickEvent);
 const eventEnter = document.querySelector(".input-list");
-
 eventEnter.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
@@ -12,9 +11,19 @@ eventEnter.addEventListener("keyup", function (event) {
 
 function firstOpen() {
   let items = getItems();
+  let checkItem = getCheckItems();
+  const allList = document.getElementsByClassName("task");
   items.forEach((element) => {
     initList(element);
   });
+
+  for (let index = 0; index < checkItem.length; index++) {
+    if (checkItem[index] == 1) {
+        allList[index].classList.add('checking');
+    }else{
+        console.log("kontrol");
+    }
+  }
 }
 
 function clickEvent(e) {
@@ -51,6 +60,7 @@ function addRemoveEvent(e) {
     deleteItemOnList(tiklananEleman.parentElement);
   } else if (tiklananEleman.classList.contains("btn-check")) {
     checkItem(tiklananEleman.parentElement);
+    console.log(tiklananEleman.parentElement);
   }
 }
 
