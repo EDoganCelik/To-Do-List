@@ -16,11 +16,8 @@ function saveItem(item) {
 
 function deleteItem(index) {
   let list = getItems();
-  console.log(index);
-  console.log(getItems());
   list.splice(index, 1);
   localStorage.setItem("items", JSON.stringify(list));
-  console.log("tets");
 }
 function deleteItemOnList(element) {
   const item = element;
@@ -33,10 +30,8 @@ function deleteItemOnList(element) {
 }
 function checkItem(element) {
   const item = element;
-  
   item.classList.toggle("checking");
   let index = getItems().indexOf(item.children[0].innerText);
-
   if (item.classList.contains("checking")) {
     saveCheckItem(index, 1);
   } else {
@@ -46,7 +41,6 @@ function checkItem(element) {
 function saveCheckItem(index, number) {
   let items = getCheckItems();
   items[index] = number;
-  console.log(items);
   localStorage.setItem("check", JSON.stringify(items));
 }
 function getCheckItems() {
